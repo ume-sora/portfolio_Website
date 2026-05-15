@@ -370,7 +370,6 @@ a {
   background: radial-gradient(circle, rgba(188, 207, 203, 0.4), transparent 66%);
 }
 
-.product-card,
 .purchase-card,
 .feature-card,
 .step-card,
@@ -381,32 +380,22 @@ a {
   border-radius: 30px;
 }
 
-.product-card {
-  width: min(100%, 640px);
-  padding: 32px;
-  z-index: 1;
-}
-
-.product-photo-card {
-  overflow: hidden;
-}
-
+/* ヒーロー実物写真：枠・トリミングなしでそのまま表示 */
 .product-photo-frame {
   position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 24px;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255, 252, 246, 0.22), rgba(255, 252, 246, 0.08)),
-    linear-gradient(135deg, #dfc8ab, #f7edde 52%, #e8d8c4);
-  box-shadow: inset 0 0 0 1px rgba(145, 122, 93, 0.08);
+  z-index: 1;
+  width: min(100%, 640px);
+  margin: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: none;
+  box-shadow: none;
 }
 
 .product-photo {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .product-photo-fallback {
@@ -430,6 +419,19 @@ a {
   margin: 0;
   color: var(--muted);
   line-height: 1.8;
+}
+
+.product-photo-frame.is-missing {
+  min-height: 220px;
+  border-radius: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.62), rgba(255, 252, 246, 0.84)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(184, 140, 99, 0.08) 0 14px,
+      rgba(255, 252, 246, 0.08) 14px 28px
+    );
 }
 
 .product-photo-frame.is-missing .product-photo {
@@ -888,7 +890,6 @@ a {
     padding-bottom: 64px;
   }
 
-  .product-card,
   .purchase-card,
   .feature-card,
   .step-card,
@@ -914,10 +915,6 @@ a {
   .book-cover {
     width: 220px;
     height: 288px;
-  }
-
-  .product-photo-frame {
-    border-radius: 18px;
   }
 
   .price-row,
